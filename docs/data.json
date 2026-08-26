@@ -466,12 +466,12 @@
               "organization": "CivicMirror",
               "type": "nonprofit",
               "url": "https://civicmirror.app"
+            },
             {
               "product_name": "CivicData",
               "organization": "CivicMirror",
               "type": "nonprofit",
               "url": "https://github.com/CivicMirror/Civic-Data"
-            },                
             },
             {
               "product_name": "Elections API",
