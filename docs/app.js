@@ -59,15 +59,30 @@ function updateStats() {
 
 function applyFilters() {
   const typeFilters = new Set();
+  const availabilityFilters = new Set();
 
-  document.querySelectorAll('.filter-checkbox:checked').forEach(checkbox => {
+  // Collect type filters (nonprofit/commercial)
+  document.querySelectorAll('.filter-checkbox:not(.filter-availability):checked').forEach(checkbox => {
     typeFilters.add(checkbox.value);
+  });
+
+  // Collect data availability filters (open/restricted)
+  document.querySelectorAll('.filter-availability:checked').forEach(checkbox => {
+    availabilityFilters.add(checkbox.value);
   });
 
   document.querySelectorAll('.item, .note-entry').forEach(itemEl => {
     const type = itemEl.getAttribute('data-type');
-    const isVisible = typeFilters.has(type);
+    const availability = itemEl.getAttribute('data-availability');
     
+    // Type filter must match if type is specified
+    const typeMatch = typeFilters.has(type);
+    
+    // Data availability match: show if no availability specified (no filter applies) 
+    // OR if availability matches a checked filter
+    const availabilityMatch = !availability || availabilityFilters.has(availability);
+    
+    const isVisible = typeMatch && availabilityMatch;
     itemEl.classList.toggle('hidden', !isVisible);
   });
 
@@ -164,10 +179,16 @@ function renderLayers(layers, noteSections) {
         const itemDiv = document.createElement('div');
         itemDiv.className = 'item';
         itemDiv.setAttribute('data-type', item.type.toLowerCase());
+        if (item.data_availability) {
+          itemDiv.setAttribute('data-availability', item.data_availability);
+        }
+        
+        const dataAvailabilityIcon = item.data_availability ? 
+          (item.data_availability === 'open' ? '🌐' : '🔐') : '';
         
         itemDiv.innerHTML = `
           <a href="${item.url}" target="_blank" rel="noopener" aria-label="${item.product_name} by ${item.organization}, ${item.type}">
-            <strong>${item.product_name}</strong>
+            <strong>${item.product_name}${dataAvailabilityIcon ? ' <span class="data-icon">' + dataAvailabilityIcon + '</span>' : ''}</strong>
             <div class="item-org">${item.organization}</div>
           </a>
         `;

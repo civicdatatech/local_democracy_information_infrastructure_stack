@@ -56,6 +56,21 @@
       </div>
 
       <div class="filters-section">
+        <h3>Legend</h3>
+        
+        <div class="legend-group">
+          <div class="legend-item">
+            <span class="legend-icon">🌐</span>
+            <span class="legend-text"><strong>Open Data:</strong> Free access, may require attribution</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-icon">🔐</span>
+            <span class="legend-text"><strong>Restricted:</strong> Fees for some or all uses</span>
+          </div>
+        </div>
+
+        <hr class="legend-divider" />
+
         <h3>Filters</h3>
         
         <div class="filter-group">
@@ -68,6 +83,17 @@
             <input type="checkbox" id="filter-commercial" class="filter-checkbox" value="commercial" checked />
             <span class="filter-swatch commercial-swatch" aria-hidden="true"></span>
             <span>Commercial</span>
+          </label>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label">
+            <input type="checkbox" id="filter-open" class="filter-checkbox filter-availability" value="open" checked />
+            <span>Open Data</span>
+          </label>
+          <label class="filter-label">
+            <input type="checkbox" id="filter-restricted" class="filter-checkbox filter-availability" value="restricted" checked />
+            <span>Restricted</span>
           </label>
         </div>
 

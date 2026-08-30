@@ -166,14 +166,48 @@ body {
 
 .filters-section {
   display: flex;
-  align-items: center;
-  gap: 0.9rem;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .filters-section h3 {
   font-size: 0.9rem;
   margin: 0;
   color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.legend-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+}
+
+.legend-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.legend-text {
+  line-height: 1.4;
+  color: #555;
+}
+
+.legend-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 0.5rem 0;
 }
 
 .filter-group {
@@ -201,6 +235,12 @@ body {
   height: 10px;
   border-radius: 50%;
   margin-right: 0.3rem;
+}
+
+.filter-icon {
+  font-size: 0.9rem;
+  margin-right: 0.3rem;
+  display: inline-block;
 }
 
 .nonprofit-swatch {
@@ -510,6 +550,11 @@ body {
 .item-org {
   font-size: 0.8rem;
   color: #666;
+}
+
+.data-icon {
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
 }
 
 .item-note {
